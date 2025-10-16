@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tardigrade AI - Contestability Pattern</title>
+    <link rel="stylesheet" href="../tardigrade.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Contestability Pattern</h1>
+        <p>Clear pathways for users to understand and challenge AI-influenced decisions.</p>
+        
+        <h2>Examples</h2>
+        
+        <section class="example">
+            <h3>Inline Contest Link</h3>
+            <div class="demo-box">
+                <div class="decision-notice">
+                    <p><strong>Decision:</strong> Application requires additional review</p>
+                    <p class="tardigrade-meta">
+                        <span class="tardigrade-badge">AI-Assisted Review</span>
+                        <a href="#" class="tardigrade-contest">Request human review</a>
+                    </p>
+                </div>
+            </div>
+            <pre><code>&lt;p class="tardigrade-meta"&gt;
+    &lt;span class="tardigrade-badge"&gt;AI-Assisted Review&lt;/span&gt;
+    &lt;a href="#" class="tardigrade-contest"&gt;Request human review&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+        </section>
+
+        <section class="example">
+            <h3>Detailed Contest Panel</h3>
+            <div class="demo-box">
+                <div class="tardigrade-decision-card">
+                    <h4>Benefits Determination</h4>
+                    <p>Status: <strong>Additional documentation needed</strong></p>
+                    
+                    <details class="tardigrade-explanation">
+                        <summary>How this decision was made</summary>
+                        <div class="tardigrade-process">
+                            <ol>
+                                <li><span class="tardigrade-badge tardigrade-automated">Automated</span> Document verification</li>
+                                <li><span class="tardigrade-badge tardigrade-assisted">AI-Assisted</span> Eligibility screening</li>
+                                <li><span class="tardigrade-badge tardigrade-human">Human</span> Final determination</li>
+                            </ol>
+                            <p>The AI system flagged missing income verification documents.</p>
+                        </div>
+                    </details>
+                    
+                    <div class="tardigrade-actions">
+                        <button class="tardigrade-button">Request human review</button>
+                        <a href="#" class="tardigrade-link">Appeal this decision</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="example">
+            <h3>Contest Form Pattern</h3>
+            <div class="demo-box">
+                <form class="tardigrade-contest-form">
+                    <h4>Request Review of AI-Assisted Decision</h4>
+                    <div class="tardigrade-form-group">
+                        <label for="reason">Why do you believe this decision should be reviewed?</label>
+                        <textarea id="reason" rows="3"></textarea>
+                    </div>
+                    <div class="tardigrade-form-group">
+                        <input type="checkbox" id="human-review">
+                        <label for="human-review">I want a human to review this decision without AI assistance</label>
+                    </div>
+                    <button type="submit" class="tardigrade-button">Submit Review Request</button>
+                    <p class="tardigrade-note">You will receive a response within 3 business days.</p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="../tardigrade.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tardigrade AI - Disclosure Badge Pattern</title>
+    <link rel="stylesheet" href="../tardigrade.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Disclosure Badge Pattern</h1>
+        <p>Simple inline indicators that AI is being used in a process.</p>
+        
+        <h2>Examples</h2>
+        
+        <section class="example">
+            <h3>Basic Badge</h3>
+            <div class="demo-box">
+                <p>Your application status: <span class="tardigrade-badge">AI-Screened</span></p>
+            </div>
+            <pre><code>&lt;span class="tardigrade-badge"&gt;AI-Screened&lt;/span&gt;</code></pre>
+        </section>
+
+        <section class="example">
+            <h3>Badge with Explanation</h3>
+            <div class="demo-box">
+                <p>
+                    Eligibility result: Likely eligible 
+                    <span class="tardigrade-disclosure">
+                        <span class="tardigrade-badge">AI-Assisted</span>
+                        <button class="tardigrade-explain" aria-label="How AI was used" aria-expanded="false">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm0-3H7V4h2v6z"/>
+                            </svg>
+                        </button>
+                        <div class="tardigrade-details" hidden>
+                            AI reviewed your application for completeness and common eligibility criteria. 
+                            A human caseworker will make the final determination.
+                        </div>
+                    </span>
+                </p>
+            </div>
+            <pre><code>&lt;span class="tardigrade-disclosure"&gt;
+    &lt;span class="tardigrade-badge"&gt;AI-Assisted&lt;/span&gt;
+    &lt;button class="tardigrade-explain" aria-label="How AI was used"&gt;?&lt;/button&gt;
+    &lt;div class="tardigrade-details" hidden&gt;
+        AI reviewed your application...
+    &lt;/div&gt;
+&lt;/span&gt;</code></pre>
+        </section>
+
+        <section class="example">
+            <h3>Decision Type Variants</h3>
+            <div class="demo-box">
+                <p>Document scan: <span class="tardigrade-badge tardigrade-automated">Automated</span></p>
+                <p>Risk score: <span class="tardigrade-badge tardigrade-assisted">AI-Assisted</span></p>
+                <p>Approval: <span class="tardigrade-badge tardigrade-human">Human Decision</span></p>
+            </div>
+            <pre><code>&lt;span class="tardigrade-badge tardigrade-automated"&gt;Automated&lt;/span&gt;
+&lt;span class="tardigrade-badge tardigrade-assisted"&gt;AI-Assisted&lt;/span&gt;
+&lt;span class="tardigrade-badge tardigrade-human"&gt;Human Decision&lt;/span&gt;</code></pre>
+        </section>
+    </div>
+
+    <script src="../tardigrade.js"></script>
+</body>
+</html>

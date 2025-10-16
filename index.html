@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tardigrade AI - Disclosure Patterns for AI Systems</title>
+    <link rel="stylesheet" href="tardigrade.css">
+    <style>
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--tardigrade-border);
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--tardigrade-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pattern-card {
+            border: 1px solid var(--tardigrade-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: white;
+            transition: box-shadow 0.2s;
+        }
+        
+        .pattern-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .pattern-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pattern-card p {
+            color: var(--tardigrade-text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .pattern-card a {
+            color: var(--tardigrade-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .pattern-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .quick-start {
+            background: var(--tardigrade-bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--tardigrade-border);
+            color: var(--tardigrade-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Tardigrade AI</h1>
+            <p>Open disclosure patterns for AI systems. Show how AI is used, explained, and made contestable in public and enterprise systems.</p>
+        </div>
+        
+        <section class="quick-start">
+            <h2>Quick Example</h2>
+            <p>Add AI disclosure to any element:</p>
+            <pre><code>&lt;span class="tardigrade-badge"&gt;AI-Assisted&lt;/span&gt;</code></pre>
+            
+            <p>Result: <span class="tardigrade-badge">AI-Assisted</span></p>
+        </section>
+        
+        <h2>Patterns</h2>
+        <div class="pattern-grid">
+            <div class="pattern-card">
+                <h3>Disclosure Badge</h3>
+                <p>Simple inline indicators that AI is being used in a process.</p>
+                <div class="demo-box">
+                    <span class="tardigrade-badge">AI-Screened</span>
+                    <span class="tardigrade-badge tardigrade-assisted">AI-Assisted</span>
+                    <span class="tardigrade-badge tardigrade-human">Human Review</span>
+                </div>
+                <a href="patterns/disclosure-badge.html">View examples →</a>
+            </div>
+            
+            <div class="pattern-card">
+                <h3>Contestability</h3>
+                <p>Clear pathways for users to understand and challenge AI decisions.</p>
+                <div class="demo-box">
+                    <div class="tardigrade-meta">
+                        <span class="tardigrade-badge">AI-Assisted</span>
+                        <a href="#" class="tardigrade-contest">Request human review</a>
+                    </div>
+                </div>
+                <a href="patterns/contestability.html">View examples →</a>
+            </div>
+            
+            <div class="pattern-card">
+                <h3>Human Oversight</h3>
+                <p>Visual indicators showing where humans remain in control.</p>
+                <div class="demo-box">
+                    <span class="tardigrade-oversight-badge tardigrade-active">
+                        <span class="tardigrade-indicator"></span>
+                        Human Reviewing
+                    </span>
+                </div>
+                <a href="patterns/human-oversight.html">View examples →</a>
+            </div>
+        </div>
+        
+        <section class="quick-start">
+            <h2>Get Started</h2>
+            <ol>
+                <li>Include the CSS: <code>&lt;link rel="stylesheet" href="tardigrade.css"&gt;</code></li>
+                <li>Add the patterns you need</li>
+                <li>Customize for your design system</li>
+            </ol>
+            
+            <h3>Download</h3>
+            <p>
+                <a href="https://github.com/Digital-Corps-PDX/tardigrade" class="tardigrade-button" style="color: white; text-decoration: none; display: inline-block;">
+                    View on GitHub
+                </a>
+            </p>
+        </section>
+        
+        <section>
+            <h2>Use Cases</h2>
+            <ul>
+                <li><strong>Benefits screening:</strong> Show when AI helps determine eligibility</li>
+                <li><strong>Risk assessment:</strong> Indicate automated scoring with human review</li>
+                <li><strong>Document processing:</strong> Mark AI-extracted vs human-verified data</li>
+                <li><strong>Decision support:</strong> Clarify where AI recommendations end and human judgment begins</li>
+            </ul>
+        </section>
+        
+        <footer class="footer">
+            <p>CC0 1.0 — Public Domain</p>
+            <p>Complements <a href="https://aistatements.org">AI Statements</a></p>
+        </footer>
+    </div>
+    
+    <script src="tardigrade.js"></script>
+</body>
+</html>

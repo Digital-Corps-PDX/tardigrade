@@ -1,0 +1,436 @@
+/* Tardigrade AI - Core Styles */
+/* CC0 1.0 - Public Domain */
+
+:root {
+  /* Core colors */
+  --tardigrade-primary: #2563eb;
+  --tardigrade-automated: #7c3aed;
+  --tardigrade-human: #059669;
+  --tardigrade-warning: #dc2626;
+  --tardigrade-neutral: #6b7280;
+  
+  /* Backgrounds */
+  --tardigrade-bg-light: #f3f4f6;
+  --tardigrade-bg-badge: #e5e7eb;
+  --tardigrade-bg-hover: #d1d5db;
+  
+  /* Text */
+  --tardigrade-text: #111827;
+  --tardigrade-text-muted: #6b7280;
+  
+  /* Borders & Shadows */
+  --tardigrade-border: #d1d5db;
+  --tardigrade-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Base styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--tardigrade-text);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.example {
+  margin: 2rem 0;
+}
+
+.demo-box {
+  border: 1px solid var(--tardigrade-border);
+  padding: 1.5rem;
+  background: white;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+pre {
+  background: var(--tardigrade-bg-light);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+/* Core Badge Pattern */
+.tardigrade-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: var(--tardigrade-bg-badge);
+  color: var(--tardigrade-text);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tardigrade-badge.tardigrade-automated {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--tardigrade-automated);
+}
+
+.tardigrade-badge.tardigrade-assisted {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--tardigrade-primary);
+}
+
+.tardigrade-badge.tardigrade-human {
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--tardigrade-human);
+}
+
+/* Disclosure with Explanation */
+.tardigrade-disclosure {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.tardigrade-explain {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid var(--tardigrade-border);
+  background: white;
+  border-radius: 50%;
+  color: var(--tardigrade-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tardigrade-explain:hover {
+  background: var(--tardigrade-bg-light);
+  color: var(--tardigrade-text);
+}
+
+.tardigrade-explain svg {
+  width: 12px;
+  height: 12px;
+}
+
+.tardigrade-details {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  padding: 12px;
+  background: white;
+  border: 1px solid var(--tardigrade-border);
+  border-radius: 6px;
+  box-shadow: var(--tardigrade-shadow);
+  max-width: 300px;
+  font-size: 0.875rem;
+  z-index: 10;
+}
+
+/* Contestability Patterns */
+.tardigrade-contest {
+  color: var(--tardigrade-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 0.875rem;
+}
+
+.tardigrade-contest:hover {
+  text-decoration-thickness: 2px;
+}
+
+.decision-notice {
+  background: var(--tardigrade-bg-light);
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.tardigrade-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.tardigrade-decision-card {
+  border: 1px solid var(--tardigrade-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: white;
+}
+
+.tardigrade-decision-card h4 {
+  margin-top: 0;
+}
+
+.tardigrade-explanation {
+  margin: 1rem 0;
+}
+
+.tardigrade-explanation summary {
+  cursor: pointer;
+  color: var(--tardigrade-primary);
+  font-weight: 500;
+}
+
+.tardigrade-process {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--tardigrade-bg-light);
+  border-radius: 6px;
+}
+
+.tardigrade-process ol {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.tardigrade-process li {
+  margin: 0.5rem 0;
+}
+
+.tardigrade-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--tardigrade-border);
+}
+
+.tardigrade-button {
+  padding: 8px 16px;
+  background: var(--tardigrade-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tardigrade-button:hover {
+  background: #1d4ed8;
+}
+
+.tardigrade-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--tardigrade-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.tardigrade-link:hover {
+  text-decoration: underline;
+}
+
+/* Contest Form */
+.tardigrade-contest-form {
+  background: var(--tardigrade-bg-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.tardigrade-contest-form h4 {
+  margin-top: 0;
+}
+
+.tardigrade-form-group {
+  margin: 1rem 0;
+}
+
+.tardigrade-form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.tardigrade-form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--tardigrade-border);
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.tardigrade-form-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.tardigrade-note {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--tardigrade-text-muted);
+}
+
+/* Human Oversight Patterns */
+.tardigrade-process-flow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--tardigrade-bg-light);
+  border-radius: 8px;
+}
+
+.tardigrade-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.tardigrade-step-icon {
+  font-size: 2rem;
+}
+
+.tardigrade-step-label {
+  font-weight: 500;
+}
+
+.tardigrade-step-type {
+  font-size: 0.75rem;
+  color: var(--tardigrade-text-muted);
+}
+
+.tardigrade-step-arrow {
+  font-size: 1.5rem;
+  color: var(--tardigrade-text-muted);
+}
+
+/* Oversight Badge */
+.tardigrade-oversight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tardigrade-oversight-badge.tardigrade-active {
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--tardigrade-human);
+}
+
+.tardigrade-oversight-badge.tardigrade-pending {
+  background: rgba(251, 146, 60, 0.1);
+  color: #ea580c;
+}
+
+.tardigrade-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.tardigrade-oversight-badge.tardigrade-active .tardigrade-indicator {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Authority Card */
+.tardigrade-authority-card {
+  border: 1px solid var(--tardigrade-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: white;
+}
+
+.tardigrade-authority-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.tardigrade-authority-item h5 {
+  margin: 0 0 0.5rem 0;
+  color: var(--tardigrade-text);
+}
+
+.tardigrade-authority-item ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--tardigrade-text-muted);
+}
+
+.tardigrade-authority-note {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--tardigrade-border);
+}
+
+/* Override Notice */
+.tardigrade-override-notice {
+  border: 2px solid var(--tardigrade-warning);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.tardigrade-override-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.tardigrade-override-icon {
+  font-size: 1.25rem;
+}
+
+.tardigrade-override-notice details {
+  margin-top: 1rem;
+}
+
+.tardigrade-override-notice summary {
+  cursor: pointer;
+  color: var(--tardigrade-warning);
+  font-weight: 500;
+}
+
+.tardigrade-override-details {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.tardigrade-override-details p {
+  margin: 0.25rem 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .tardigrade-authority-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tardigrade-process-flow {
+    flex-direction: column;
+  }
+  
+  .tardigrade-step-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .tardigrade-actions {
+    flex-direction: column;
+  }
+}

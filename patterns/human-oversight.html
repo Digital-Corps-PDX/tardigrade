@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tardigrade AI - Human Oversight Pattern</title>
+    <link rel="stylesheet" href="../tardigrade.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Human Oversight Pattern</h1>
+        <p>Visual indicators showing where and how humans remain in control of AI-assisted processes.</p>
+        
+        <h2>Examples</h2>
+        
+        <section class="example">
+            <h3>Process Flow Indicator</h3>
+            <div class="demo-box">
+                <div class="tardigrade-process-flow">
+                    <div class="tardigrade-step">
+                        <span class="tardigrade-step-icon tardigrade-automated">🤖</span>
+                        <span class="tardigrade-step-label">Initial Screening</span>
+                        <span class="tardigrade-step-type">Automated</span>
+                    </div>
+                    <div class="tardigrade-step-arrow">→</div>
+                    <div class="tardigrade-step">
+                        <span class="tardigrade-step-icon tardigrade-human">👤</span>
+                        <span class="tardigrade-step-label">Review & Decision</span>
+                        <span class="tardigrade-step-type">Human Required</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="example">
+            <h3>Oversight Status Badge</h3>
+            <div class="demo-box">
+                <div class="tardigrade-status">
+                    <span class="tardigrade-oversight-badge tardigrade-active">
+                        <span class="tardigrade-indicator"></span>
+                        Human Reviewing
+                    </span>
+                </div>
+                <br>
+                <div class="tardigrade-status">
+                    <span class="tardigrade-oversight-badge tardigrade-pending">
+                        <span class="tardigrade-indicator"></span>
+                        Awaiting Human Review
+                    </span>
+                </div>
+            </div>
+            <pre><code>&lt;span class="tardigrade-oversight-badge tardigrade-active"&gt;
+    &lt;span class="tardigrade-indicator"&gt;&lt;/span&gt;
+    Human Reviewing
+&lt;/span&gt;</code></pre>
+        </section>
+
+        <section class="example">
+            <h3>Decision Authority Card</h3>
+            <div class="demo-box">
+                <div class="tardigrade-authority-card">
+                    <h4>Loan Application Review</h4>
+                    <div class="tardigrade-authority-grid">
+                        <div class="tardigrade-authority-item">
+                            <h5>AI System Can:</h5>
+                            <ul>
+                                <li>Verify documents</li>
+                                <li>Calculate risk scores</li>
+                                <li>Flag inconsistencies</li>
+                            </ul>
+                        </div>
+                        <div class="tardigrade-authority-item">
+                            <h5>Human Must:</h5>
+                            <ul>
+                                <li>Make final decision</li>
+                                <li>Review flagged items</li>
+                                <li>Handle appeals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="tardigrade-authority-note">
+                        <strong>Current Status:</strong> 
+                        <span class="tardigrade-oversight-badge tardigrade-pending">Awaiting loan officer review</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example">
+            <h3>Override Notification</h3>
+            <div class="demo-box">
+                <div class="tardigrade-override-notice">
+                    <div class="tardigrade-override-header">
+                        <span class="tardigrade-override-icon">⚡</span>
+                        <strong>Human Override Applied</strong>
+                    </div>
+                    <p>A human reviewer has modified the AI recommendation.</p>
+                    <details>
+                        <summary>View details</summary>
+                        <div class="tardigrade-override-details">
+                            <p><strong>AI Recommendation:</strong> Deny - Risk score 85</p>
+                            <p><strong>Human Decision:</strong> Approve with conditions</p>
+                            <p><strong>Reason:</strong> Additional context considered</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../tardigrade.js"></script>
+</body>
+</html>
