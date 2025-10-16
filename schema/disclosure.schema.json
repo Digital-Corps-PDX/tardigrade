@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Decision Disclosure",
+  "description": "A structured schema for documenting how AI is used in decision-making systems.",
+  "type": "object",
+  "required": [
+    "systemName",
+    "organization",
+    "purpose",
+    "decides",
+    "recommends",
+    "humanDecides",
+    "override",
+    "challenge",
+    "monitoring"
+  ],
+  "properties": {
+    "systemName": {
+      "type": "string",
+      "description": "Name of the AI system or process being disclosed."
+    },
+    "organization": {
+      "type": "string",
+      "description": "The agency, company, or entity responsible for the system."
+    },
+    "purpose": {
+      "type": "string",
+      "description": "Plain language summary of what the AI system does and why it exists."
+    },
+    "decides": {
+      "type": "string",
+      "description": "What decisions the system makes without human input."
+    },
+    "recommends": {
+      "type": "string",
+      "description": "What the system suggests for human consideration."
+    },
+    "humanDecides": {
+      "type": "string",
+      "description": "What decisions remain under human control."
+    },
+    "override": {
+      "type": "string",
+      "description": "How and when humans can override or reverse system actions."
+    },
+    "challenge": {
+      "type": "string",
+      "description": "How people can contest or appeal a decision influenced by AI."
+    },
+    "monitoring": {
+      "type": "string",
+      "description": "How the system’s performance is monitored or audited over time."
+    },
+    "accuracy": {
+      "type": "string",
+      "description": "Any available accuracy, precision, or confidence data for the system."
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the disclosure was last reviewed or modified."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional clarifying details or limitations."
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code for multilingual disclosures (e.g., 'en', 'fi', 'es')."
+    },
+    "contact": {
+      "type": "string",
+      "description": "Contact email or URL for follow-up questions."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Disclosure version number following semantic versioning."
+    }
+  },
+  "additionalProperties": false
+}
