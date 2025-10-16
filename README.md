@@ -1,71 +1,45 @@
-# AI Disclosure Components
+# Tardigrade AI
 
-Open source web components for AI system transparency. Drop-in badges and disclosure widgets that make algorithmic decision-making visible.
+Tardigrade is an open set of disclosure patterns for AI systems.
 
-## Quick Start
+It complements [AI Statements](https://aistatements.org) by focusing on the visible interface layer —
+how AI use is shown, explained, and made contestable in public and enterprise systems.
 
-Add this single line to any webpage:
-```html<script src="https://unpkg.com/ai-disclosure-components@latest/dist/widget.js"></script>
+### Why
 
-Then use the component:
-```html<ai-disclosure type="benefits-screener" mode="badge"></ai-disclosure>
+As AI components become part of design systems, we need shared language and UI patterns for visibility and accountability.
 
-## Installation Options
+### What's Inside
 
-### CDN (Recommended)
-```html<script src="https://unpkg.com/ai-disclosure-components@latest/dist/widget.js"></script>
+- Pattern examples for inline disclosure, human oversight indicators, and contestability
+- HTML/CSS components that can be reused in any design system
+- Documentation for how to adapt patterns to benefits, safety, and licensing contexts
 
-### NPM
-```bashnpm install ai-disclosure-components
+### Quick Example
+```html
+<div class="tardigrade-disclosure">
+  <span class="tardigrade-indicator">AI-Assisted</span>
+  <button class="tardigrade-explain" aria-label="How AI is used">?</button>
+</div>
+```
 
-### Self-Host
-Download `dist/widget.js` and `dist/widget.css` and host on your server.
+### Use Cases
 
-## Component Types
+- **Benefits screening**: Show when AI helps determine eligibility
+- **Risk assessment**: Indicate automated scoring with human review
+- **Document processing**: Mark AI-extracted vs human-verified data
+- **Decision support**: Clarify where AI recommendations end and human judgment begins
 
-### Basic Badge
-```html<ai-disclosure type="eligibility-check"></ai-disclosure>
+### Get Started
 
-### Full Disclosure Card
-```html<ai-disclosure 
-type="eligibility-check" 
-mode="card"
-disclosure-url="/our-ai-policy">
-</ai-disclosure>
+1. Browse the [patterns](/patterns)
+2. Copy the HTML/CSS you need
+3. Adapt to your design system
 
-### Inline Notice
-```html<ai-disclosure 
-type="recommendation" 
-mode="inline"
-theme="minimal">
-</ai-disclosure>
+### Contributing
 
-## Disclosure Types
+Submit patterns via PR. Focus on real implementations, not theoretical designs.
 
-- `eligibility-check` - Benefits eligibility screening
-- `risk-assessment` - Safety and risk evaluation
-- `recommendation` - Decision support systems
-- `document-review` - Automated document processing
-- `matching` - Candidate/resource matching
-- `priority-ranking` - Scheduling and prioritization
+### License
 
-## Visual Design System
-
-Our components follow these principles:
-
-- **High Contrast**: WCAG AAA compliant
-- **Government-Ready**: Works without JavaScript enabled
-- **Trust Indicators**: Consistent shield iconography
-- **Progressive Disclosure**: Information on demand
-
-## Examples
-
-See the `/examples` directory for complete implementations.
-
-## License
-
-Public domain. No attribution required.
-
-## Contributing
-
-This is a community project. PRs welcome for new disclosure types, visual themes, and framework integrations.
+CC0 1.0 — public domain.
