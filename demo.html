@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tardigrade AI - Disclosure Patterns for AI Systems</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uswds@3.7.1/dist/css/uswds.min.css">
+    <style>
+        /* Tachyons-inspired documentation styles */
+        :root {
+            --primary: #005ea2;
+            --primary-darker: #1a4480;
+            --base-lightest: #f0f0f0;
+            --base-lighter: #dfe1e2;
+            --base-light: #a9aeb1;
+            --ink: #1b1b1b;
+            --white: #ffffff;
+        }
+
+        /* Typography */
+        .f1 { font-size: 3rem; }
+        .f2 { font-size: 2.25rem; }
+        .f3 { font-size: 1.5rem; }
+        .f4 { font-size: 1.25rem; }
+        .f5 { font-size: 1rem; }
+        .f6 { font-size: .875rem; }
+        
+        .lh-title { line-height: 1.25; }
+        .lh-copy { line-height: 1.5; }
+        
+        /* Spacing */
+        .mt0 { margin-top: 0; }
+        .mb0 { margin-bottom: 0; }
+        .mb2 { margin-bottom: .5rem; }
+        .mb3 { margin-bottom: 1rem; }
+        .mb4 { margin-bottom: 2rem; }
+        .mb5 { margin-bottom: 4rem; }
+        
+        .pa3 { padding: 1rem; }
+        .pa4 { padding: 2rem; }
+        .pv3 { padding-top: 1rem; padding-bottom: 1rem; }
+        .pv4 { padding-top: 2rem; padding-bottom: 2rem; }
+        .ph3 { padding-left: 1rem; padding-right: 1rem; }
+        
+        /* Layout */
+        .mw8 { max-width: 64rem; }
+        .mw9 { max-width: 96rem; }
+        .center { margin-left: auto; margin-right: auto; }
+        
+        /* Colors */
+        .bg-white { background-color: var(--white); }
+        .bg-lightest { background-color: var(--base-lightest); }
+        .bg-primary { background-color: var(--primary); }
+        .bg-primary-darker { background-color: var(--primary-darker); }
+        
+        .primary { color: var(--primary); }
+        .ink { color: var(--ink); }
+        .gray { color: var(--base-light); }
+        .white { color: var(--white); }
+        
+        /* Borders */
+        .ba { border-style: solid; border-width: 1px; }
+        .bt { border-top-style: solid; border-top-width: 1px; }
+        .bb { border-bottom-style: solid; border-bottom-width: 1px; }
+        .b--light-gray { border-color: var(--base-lighter); }
+        .br2 { border-radius: .25rem; }
+        .br3 { border-radius: .5rem; }
+        
+        /* Custom documentation styles */
+        .pattern-example {
+            background: white;
+            border: 1px solid var(--base-lighter);
+            border-radius: .25rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .code-example {
+            background: #f8f9fa;
+            border: 1px solid var(--base-lighter);
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Public Sans Mono', monospace;
+            font-size: .875rem;
+            line-height: 1.5;
+            margin: 0 0 2rem 0;
+        }
+        
+        pre {
+            margin: 0;
+        }
+        
+        .pattern-section {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--base-lighter);
+        }
+        
+        .pattern-section:last-child {
+            border-bottom: none;
+        }
+        
+        /* Navigation sidebar */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        
+        .nav-item {
+            display: block;
+            padding: .5rem 0;
+            color: var(--ink);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            margin-left: -1rem;
+        }
+        
+        .nav-item:hover {
+            border-left-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .nav-item.active {
+            border-left-color: var(--primary-darker);
+            color: var(--primary-darker);
+            font-weight: 600;
+        }
+        
+        /* Pattern variations */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .variation-example {
+            background: white;
+            padding: 1rem;
+            border: 1px solid var(--base-lighter);
+            border-radius: .25rem;
+            text-align: center;
+        }
+        
+        /* USWDS overrides for documentation */
+        .usa-tag {
+            font-size: .875rem;
+        }
+        
+        .header-banner {
+            background: var(--primary-darker);
+            color: white;
+            padding: .5rem 0;
+            font-size: .875rem;
+        }
+        
+        /* Utility classes */
+        .mono { font-family: 'Public Sans Mono', monospace; }
+        .fw-bold { font-weight: 700; }
+        .fw-normal { font-weight: 400; }
+        
+        @media (max-width: 1024px) {
+            .sidebar {
+                position: static;
+                margin-bottom: 3rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-lightest">
+    <!-- Header banner -->
+    <div class="header-banner">
+        <div class="mw9 center ph3">
+            <span>🛡️ An open source project from Portland Digital Corps</span>
+        </div>
+    </div>
+
+    <!-- Main header -->
+    <header class="bg-white bb b--light-gray">
+        <div class="mw9 center ph3 pv4">
+            <h1 class="f1 lh-title mt0 mb2">Tardigrade AI</h1>
+            <p class="f4 gray mt0 mb0 lh-copy">Disclosure patterns for AI systems in public services</p>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <div class="mw9 center ph3 pv4">
+        <div class="grid-container">
+            <div class="grid-row">
+                <!-- Sidebar navigation -->
+                <nav class="tablet:grid-col-3 sidebar">
+                    <h2 class="f6 fw-bold mb3">PATTERNS</h2>
+                    <a href="#disclosure-badges" class="nav-item active">Disclosure Badges</a>
+                    <a href="#explanation-tooltips" class="nav-item">Explanation Tooltips</a>
+                    <a href="#contestability" class="nav-item">Contestability</a>
+                    <a href="#human-oversight" class="nav-item">Human Oversight</a>
+                    <a href="#confidence-indicators" class="nav-item">Confidence Indicators</a>
+                    <a href="#process-flows" class="nav-item">Process Flows</a>
+                    <a href="#decision-cards" class="nav-item">Decision Cards</a>
+                    <a href="#audit-trails" class="nav-item">Audit Trails</a>
+                    
+                    <h2 class="f6 fw-bold mb3 mt4">REFERENCE</h2>
+                    <a href="#installation" class="nav-item">Installation</a>
+                    <a href="#theming" class="nav-item">Theming</a>
+                    <a href="#accessibility" class="nav-item">Accessibility</a>
+                    <a href="#guidelines" class="nav-item">Usage Guidelines</a>
+                </nav>
+
+                <!-- Main content area -->
+                <main class="tablet:grid-col-9 tablet:padding-left-4">
+                    <!-- Introduction -->
+                    <section class="pattern-section">
+                        <h2 class="f2 mb3">Introduction</h2>
+                        <p class="usa-intro">
+                            Tardigrade provides standardized UI patterns for disclosing AI use in government services.
+                            Built on USWDS principles, these patterns help agencies meet transparency requirements
+                            while maintaining consistent, accessible interfaces.
+                        </p>
+                        
+                        <div class="usa-alert usa-alert--info mb4">
+                            <div class="usa-alert__body">
+                                <p class="usa-alert__text">
+                                    These patterns complement <a href="https://aistatements.org">AI Statements</a>
+                                    by providing the visual interface layer for AI transparency.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="f3 mb3">Quick Start</h3>
+                        <div class="code-example">
+<pre>&lt;!-- Include USWDS + Tardigrade --&gt;
+&lt;link rel="stylesheet" href="uswds.min.css"&gt;
+&lt;link rel="stylesheet" href="tardigrade.css"&gt;
+
+&lt;!-- Add disclosure badge --&gt;
+&lt;span class="usa-tag tardigrade-ai"&gt;AI-Assisted&lt;/span&gt;</pre>
+                        </div>
+                    </section>
+
+                    <!-- Disclosure Badges -->
+                    <section id="disclosure-badges" class="pattern-section">
+                        <h2 class="f2 mb3">Disclosure Badges</h2>
+                        <p class="f5 lh-copy mb4">
+                            Inline indicators that show AI involvement in a process. Use these to mark
+                            specific fields, sections, or decisions influenced by AI systems.
+                        </p>
+
+                        <h3 class="f4 mb3">Basic Badges</h3>
+                        <div class="pattern-example">
+                            <span class="usa-tag">Default</span>
+                            <span class="usa-tag tardigrade-ai">AI-Assisted</span>
+                            <span class="usa-tag tardigrade-automated">Automated</span>
+                            <span class="usa-tag tardigrade-human">Human Review</span>
+                        </div>
+                        <div class="code-example">
+<pre>&lt;span class="usa-tag"&gt;Default&lt;/span&gt;
+&lt;span class="usa-tag tardigrade-ai"&gt;AI-Assisted&lt;/span&gt;
+&lt;span class="usa-tag tardigrade-automated"&gt;Automated&lt;/span&gt;
+&lt;span class="usa-tag tardigrade-human"&gt;Human Review&lt;/span&gt;</pre>
+                        </div>
+
+                        <h3 class="f4 mb3">Contextual Usage</h3>
+                        <div class="pattern-grid">
+                            <div class="variation-example">
+                                <label class="usa-label">Income</label>
+                                <span class="usa-tag tardigrade-automated">Auto-verified</span>
+                                <p class="f6 gray mt2">For verified data sources</p>
+                            </div>
+                            <div class="variation-example">
+                                <label class="usa-label">Risk Score</label>
+                                <span class="usa-tag tardigrade-ai">AI-Calculated</span>
+                                <p class="f6 gray mt2">For AI predictions</p>
+                            </div>
+                            <div class="variation-example">
+                                <label class="usa-label">Final Decision</label>
+                                <span class="usa-tag tardigrade-human">Human Required</span>
+                                <p class="f6 gray mt2">For human oversight</p>
+                            </div>
+                        </div>
+
+                        <h3 class="f4 mb3">With Status Indicators</h3>
+                        <div class="pattern-example">
+                            <div class="usa-alert usa-alert--warning usa-alert--slim">
+                                <div class="usa-alert__body">
+                                    <p class="usa-alert__text">
+                                        <strong>Application Status:</strong> Under Review
+                                        <span class="usa-tag tardigrade-ai float-right">AI Pre-screening Complete</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Explanation Tooltips -->
+                    <section id="explanation-tooltips" class="pattern-section">
+                        <h2 class="f2 mb3">Explanation Tooltips</h2>
+                        <p class="f5 lh-copy mb4">
+                            Expandable explanations that provide context about AI involvement without
+                            cluttering the interface. Users can access details on demand.
+                        </p>
+
+                        <h3 class="f4 mb3">Basic Tooltip</h3>
+                        <div class="pattern-example">
+                            <p>
+                                Your eligibility: Likely eligible
+                                <button class="usa-button usa-button--unstyled tardigrade-info" aria-label="How AI was used">
+                                    <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                                        <use xlink:href="/assets/img/sprite.svg#info_outline"></use>
+                                    </svg>
+                                </button>
+                                <span class="usa-tooltip" id="tooltip-ai-1">
+                                    AI reviewed your application for completeness and common eligibility patterns.
+                                    A caseworker will make the final determination.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="code-example">
+<pre>&lt;button class="usa-button usa-button--unstyled tardigrade-info"&gt;
+    &lt;svg class="usa-icon"&gt;...&lt;/svg&gt;
+&lt;/button&gt;
+&lt;span class="usa-tooltip"&gt;
+    AI reviewed your application...
+&lt;/span&gt;</pre>
+                        </div>
+
+                        <h3 class="f4 mb3">Inline Accordion</h3>
+                        <div class="pattern-example">
+                            <div class="usa-accordion usa-accordion--bordered">
+                                <h4 class="usa-accordion__heading">
+                                    <button class="usa-accordion__button" aria-expanded="false" aria-controls="ai-details-1">
+                                        How was this decision made?
+                                        <span class="usa-tag tardigrade-ai">AI-Assisted</span>
+                                    </button>
+                                </h4>
+                                <div id="ai-details-1" class="usa-accordion__content usa-prose" hidden>
+                                    <ol>
+                                        <li>Automated document verification checked for completeness</li>
+                                        <li>AI model assessed eligibility based on program rules</li>
+                                        <li>Human reviewer will confirm final determination</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contestability -->
+                    <section id="contestability" class="pattern-section">
+                        <h2 class="f2 mb3">Contestability</h2>
+                        <p class="f5 lh-copy mb4">
+                            Clear pathways for users to request human review or appeal AI-influenced decisions.
+                            Every automated decision should have a contestability option.
+                        </p>
+
+                        <h3 class="f4 mb3">Inline Contest Link</h3>
+                        <div class="pattern-example">
+                            <div class="usa-alert usa-alert--info">
+                                <div class="usa-alert__body">
+                                    <h4 class="usa-alert__heading">Application Decision</h4>
+                                    <p class="usa-alert__text">
+                                        Status: Additional documentation required
+                                        <span class="usa-tag tardigrade-ai">AI-Screened</span>
+                                    </p>
+                                    <div class="usa-button-group">
+                                        <a href="#" class="usa-button usa-button--outline">Request Human Review</a>
+                                        <a href="#" class="usa-link">Learn about the process</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="f4 mb3">Contest Form Pattern</h3>
+                        <div class="pattern-example">
+                            <form class="usa-form">
+                                <fieldset class="usa-fieldset">
+                                    <legend class="usa-legend usa-legend--large">Request Review of AI Decision</legend>
+                                    
+                                    <label class="usa-label" for="review-reason">
+                                        Why should this decision be reviewed?
+                                    </label>
+                                    <textarea class="usa-textarea" id="review-reason" name="review-reason"></textarea>
+                                    
+                                    <div class="usa-checkbox">
+                                        <input class="usa-checkbox__input" id="human-only" type="checkbox" name="human-only">
+                                        <label class="usa-checkbox__label" for="human-only">
+                                            Request human-only review (no AI assistance)
+                                        </label>
+                                    </div>
+                                    
+                                    <button class="usa-button">Submit Review Request</button>
+                                    <p class="usa-hint">You'll receive a response within 3 business days</p>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Human Oversight -->
+                    <section id="human-oversight" class="pattern-section">
+                        <h2 class="f2 mb3">Human Oversight</h2>
+                        <p class="f5 lh-copy mb4">
+                            Visual indicators showing where humans maintain control and review AI outputs.
+                            Use these patterns to build trust by showing human involvement.
+                        </p>
+
+                        <h3 class="f4 mb3">Process Steps</h3>
+                        <div class="pattern-example">
+                            <div class="usa-process-list">
+                                <li class="usa-process-list__item">
+                                    <h4 class="usa-process-list__heading">
+                                        Application Submitted
+                                        <span class="usa-tag">Complete</span>
+                                    </h4>
+                                </li>
+                                <li class="usa-process-list__item">
+                                    <h4 class="usa-process-list__heading">
+                                        AI Pre-screening
+                                        <span class="usa-tag tardigrade-automated">Automated</span>
+                                    </h4>
+                                    <p>Checking for completeness and basic eligibility</p>
+                                </li>
+                                <li class="usa-process-list__item">
+                                    <h4 class="usa-process-list__heading">
+                                        Human Review
+                                        <span class="usa-tag tardigrade-human">In Progress</span>
+                                    </h4>
+                                    <p>Caseworker reviewing AI recommendations</p>
+                                </li>
+                            </div>
+                        </div>
+
+                        <h3 class="f4 mb3">Oversight Cards</h3>
+                        <div class="pattern-example">
+                            <div class="usa-card">
+                                <div class="usa-card__container">
+                                    <div class="usa-card__header">
+                                        <h3 class="usa-card__heading">Loan Application Review</h3>
+                                    </div>
+                                    <div class="usa-card__body">
+                                        <div class="grid-row grid-gap">
+                                            <div class="tablet:grid-col">
+                                                <h4 class="f5">AI System Can:</h4>
+                                                <ul class="usa-list">
+                                                    <li>Verify documents</li>
+                                                    <li>Calculate risk scores</li>
+                                                    <li>Flag concerns</li>
+                                                </ul>
+                                            </div>
+                                            <div class="tablet:grid-col">
+                                                <h4 class="f5">Human Must:</h4>
+                                                <ul class="usa-list">
+                                                    <li>Make final decision</li>
+                                                    <li>Review exceptions</li>
+                                                    <li>Handle appeals</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="usa-card__footer">
+                                        <span class="usa-tag tardigrade-human">
+                                            <span class="tardigrade-pulse"></span>
+                                            Human Reviewing Now
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Confidence Indicators -->
+                    <section id="confidence-indicators" class="pattern-section">
+                        <h2 class="f2 mb3">Confidence Indicators</h2>
+                        <p class="f5 lh-copy mb4">
+                            Show the AI system's confidence level in its predictions or recommendations.
+                            This helps users and reviewers understand when to apply extra scrutiny.
+                        </p>
+
+                        <h3 class="f4 mb3">Confidence Meters</h3>
+                        <div class="pattern-example">
+                            <div class="tardigrade-confidence">
+                                <label class="usa-label">Document Authenticity Check</label>
+                                <div class="usa-alert usa-alert--success usa-alert--slim">
+                                    <div class="usa-alert__body">
+                                        <p class="usa-alert__text">
+                                            <strong>High Confidence (95%)</strong> - Document appears authentic
+                                            <span class="usa-tag tardigrade-automated float-right">AI Verified</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tardigrade-confidence mt3">
+                                <label class="usa-label">Income Calculation</label>
+                                <div class="usa-alert usa-alert--warning usa-alert--slim">
+                                    <div class="usa-alert__body">
+                                        <p class="usa-alert__text">
+                                            <strong>Medium Confidence (72%)</strong> - Manual review recommended
+                                            <span class="usa-tag tardigrade-ai float-right">AI Estimated</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="f4 mb3">Uncertainty Flags</h3>
+                        <div class="pattern-example">
+                            <div class="usa-form-group">
+                                <label class="usa-label">Calculated Benefit Amount</label>
+                                <div class="usa-input-group">
+                                    <div class="usa-input-group__prefix">$</div>
+                                    <input class="usa-input" value="1,245" readonly>
+                                    <div class="usa-input-group__suffix">
+                                        <span class="usa-tag tardigrade-ai">AI Estimate ±5%</span>
+                                    </div>
+                                </div>
+                                <span class="usa-hint">Final amount subject to human verification</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Process Flows -->
+                    <section id="process-flows" class="pattern-section">
+                        <h2 class="f2 mb3">Process Flows</h2>
+                        <p class="f5 lh-copy mb4">
+                            Visual representations of how AI and humans work together in a process.
+                            Use these to set expectations about decision pathways.
+                        </p>
+
+                        <h3 class="f4 mb3">Decision Flow Diagram</h3>
+                        <div class="pattern-example">
+                            <div class="tardigrade-flow">
+                                <div class="tardigrade-flow-step">
+                                    <div class="usa-card">
+                                        <div class="usa-card__body text-center">
+                                            <span class="f2">📄</span>
+                                            <p class="fw-bold">Application Received</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tardigrade-flow-arrow">↓</div>
+                                <div class="tardigrade-flow-step">
+                                    <div class="usa-card">
+                                        <div class="usa-card__body text-center">
+                                            <span class="f2">🤖</span>
+                                            <p class="fw-bold">AI Screening</p>
+                                            <span class="usa-tag tardigrade-automated">Automated</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tardigrade-flow-arrow">↓</div>
+                                <div class="grid-row grid-gap-2">
+                                    <div class="grid-col-6">
+                                        <div class="usa-card">
+                                            <div class="usa-card__body text-center">
+                                                <span class="f2">✅</span>
+                                                <p class="fw-bold">Clear Cases</p>
+                                                <span class="usa-tag tardigrade-automated">Auto-Approved</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid-col-6">
+                                        <div class="usa-card">
+                                            <div class="usa-card__body text-center">
+                                                <span class="f2">👤</span>
+                                                <p class="fw-bold">Complex Cases</p>
+                                                <span class="usa-tag tardigrade-human">Human Review</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Decision Cards -->
+                    <section id="decision-cards" class="pattern-section">
+                        <h2 class="f2 mb3">Decision Cards</h2>
+                        <p class="f5 lh-copy mb4">
+                            Comprehensive decision summaries that show what was decided, how, and by whom.
+                            Use these for important outcomes that users need to understand and potentially contest.
+                        </p>
+
+                        <h3 class="f4 mb3">Full Decision Card</h3>
+                        <div class="pattern-example">
+                            <div class="usa-card">
+                                <div class="usa-card__container">
+                                    <div class="usa-card__header">
+                                        <h3 class="usa-card__heading">Benefits Determination</h3>
+                                        <div class="usa-card__media usa-card__media--inset">
+                                            <div class="usa-alert usa-alert--success usa-alert--no-icon">
+                                                <div class="usa-alert__body">
+                                                    <p class="usa-alert__heading">Decision: Approved</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="usa-card__body">
+                                        <h4 class="f5">Decision Process</h4>
+                                        <ol class="usa-process-list usa-process-list--connected">
+                                            <li class="usa-process-list__item">
+                                                <span class="usa-tag tardigrade-automated">Automated</span>
+                                                Document verification - All documents validated
+                                            </li>
+                                            <li class="usa-process-list__item">
+                                                <span class="usa-tag tardigrade-ai">AI-Assisted</span>
+                                                Eligibility assessment - Meets all criteria
+                                            </li>
+                                            <li class="usa-process-list__item">
+                                                <span class="usa-tag tardigrade-human">Human</span>
+                                                Final approval by Case Manager Sarah Johnson
+                                            </li>
+                                        </ol>
+                                        
+                                        <h4 class="f5">Key Factors</h4>
+                                        <ul class="usa-list">
+                                            <li>Income below threshold: $24,500 (verified)</li>
+                                            <li>Household size: 3 people</li>
+                                            <li>Residency requirements: Met</li>
+                                        </ul>
+                                    </div>
+                                    <div class="usa-card__footer">
+                                        <button class="usa-button usa-button--outline">Request Recalculation</button>
+                                        <a href="#" class="usa-link margin-left-2">Download full determination</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Audit Trails -->
+                    <section id="audit-trails" class="pattern-section">
+                        <h2 class="f2 mb3">Audit Trails</h2>
+                        <p class="f5 lh-copy mb4">
+                            Detailed logs showing the complete history of AI and human actions on a case.
+                            Essential for accountability and debugging.
+                        </p>
+
+                        <h3 class="f4 mb3">Activity Timeline</h3>
+                        <div class="pattern-example">
+                            <div class="usa-table-container">
+                                <table class="usa-table usa-table--striped">
+                                    <caption>Application Processing History</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Actor</th>
+                                            <th scope="col">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Oct 16, 2:30 PM</td>
+                                            <td>Application Submitted</td>
+                                            <td><span class="usa-tag">User</span></td>
+                                            <td>Initial submission</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oct 16, 2:31 PM</td>
+                                            <td>Document Scan</td>
+                                            <td><span class="usa-tag tardigrade-automated">AI System</span></td>
+                                            <td>3 documents verified, 1 flagged</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oct 16, 2:32 PM</td>
+                                            <td>Risk Assessment</td>
+                                            <td><span class="usa-tag tardigrade-ai">AI Model v2.4</span></td>
+                                            <td>Low risk (confidence: 89%)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oct 16, 3:45 PM</td>
+                                            <td>Manual Review</td>
+                                            <td><span class="usa-tag tardigrade-human">J. Smith</span></td>
+                                            <td>Verified flagged document</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oct 16, 3:50 PM</td>
+                                            <td>Decision Recorded</td>
+                                            <td><span class="usa-tag tardigrade-human">J. Smith</span></td>
+                                            <td>Approved with standard terms</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Installation -->
+                    <section id="installation" class="pattern-section">
+                        <h2 class="f2 mb3">Installation</h2>
+                        
+                        <h3 class="f4 mb3">Option 1: Include with USWDS</h3>
+                        <div class="code-example">
+<pre>&lt;!-- USWDS CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uswds@3.7.1/dist/css/uswds.min.css"&gt;
+
+&lt;!-- Tardigrade patterns --&gt;
+&lt;link rel="stylesheet" href="tardigrade.css"&gt;
+&lt;script src="tardigrade.js"&gt;&lt;/script&gt;</pre>
+                        </div>
+
+                        <h3 class="f4 mb3">Option 2: NPM Package</h3>
+                        <div class="code-example">
+<pre>npm install @tardigrade-ai/patterns uswds
+
+// In your main CSS
+@import 'uswds';
+@import '@tardigrade-ai/patterns';</pre>
+                        </div>
+
+                        <h3 class="f4 mb3">Option 3: Download</h3>
+                        <p>
+                            <a href="https://github.com/Digital-Corps-PDX/tardigrade/releases" class="usa-button">
+                                Download Latest Release
+                            </a>
+                        </p>
+                    </section>
+
+                    <!-- Theming -->
+                    <section id="theming" class="pattern-section">
+                        <h2 class="f2 mb3">Theming</h2>
+                        <p class="f5 lh-copy mb4">
+                            Tardigrade patterns use USWDS design tokens. Override these CSS custom properties
+                            to match your agency's brand while maintaining consistency.
+                        </p>
+
+                        <div class="code-example">
+<pre>:root {
+  /* AI-specific colors */
+  --tardigrade-ai-primary: var(--usa-primary);
+  --tardigrade-ai-automated: var(--usa-secondary);
+  --tardigrade-ai-human: var(--usa-success);
+  
+  /* Confidence levels */
+  --tardigrade-confidence-high: var(--usa-success);
+  --tardigrade-confidence-medium: var(--usa-warning);
+  --tardigrade-confidence-low: var(--usa-error);
+}</pre>
+                        </div>
+                    </section>
+
+                    <!-- Accessibility -->
+                    <section id="accessibility" class="pattern-section">
+                        <h2 class="f2 mb3">Accessibility</h2>
+                        <p class="f5 lh-copy mb4">
+                            All patterns are WCAG 2.1 AA compliant and tested with screen readers.
+                            Key accessibility features include:
+                        </p>
+
+                        <ul class="usa-list">
+                            <li>Proper ARIA labels for all interactive elements</li>
+                            <li>Keyboard navigation support</li>
+                            <li>Screen reader announcements for dynamic content</li>
+                            <li>High contrast mode compatibility</li>
+                            <li>Focus indicators that meet WCAG standards</li>
+                        </ul>
+
+                        <div class="usa-alert usa-alert--info">
+                            <div class="usa-alert__body">
+                                <h4 class="usa-alert__heading">Testing Tip</h4>
+                                <p class="usa-alert__text">
+                                    Test all AI disclosure patterns with screen readers to ensure
+                                    users understand when AI is involved in decisions affecting them.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Guidelines -->
+                    <section id="guidelines" class="pattern-section">
+                        <h2 class="f2 mb3">Usage Guidelines</h2>
+                        
+                        <h3 class="f4 mb3">When to Disclose AI Use</h3>
+                        <ul class="usa-list">
+                            <li><strong>Always disclose</strong> when AI influences decisions about benefits, services, or rights</li>
+                            <li><strong>Always provide</strong> a path to human review for significant decisions</li>
+                            <li><strong>Always explain</strong> in plain language what the AI does and doesn't do</li>
+                            <li><strong>Never hide</strong> AI involvement behind technical jargon</li>
+                        </ul>
+
+                        <h3 class="f4 mb3">Writing AI Explanations</h3>
+                        <div class="usa-graphic-list">
+                            <div class="usa-graphic-list__row">
+                                <div class="usa-graphic-list__graphic">
+                                    <span class="text-success f2">✓</span>
+                                </div>
+                                <div class="usa-graphic-list__body">
+                                    <h4 class="usa-graphic-list__heading">Do</h4>
+                                    <p>"AI helped check your documents for completeness"</p>
+                                </div>
+                            </div>
+                            <div class="usa-graphic-list__row">
+                                <div class="usa-graphic-list__graphic">
+                                    <span class="text-secondary f2">✗</span>
+                                </div>
+                                <div class="usa-graphic-list__body">
+                                    <h4 class="usa-graphic-list__heading">Don't</h4>
+                                    <p>"ML classifier performed document validation using OCR"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="f4 mb3">Contestability Requirements</h3>
+                        <p>Every AI-influenced decision must include:</p>
+                        <ol class="usa-list">
+                            <li>Clear indication that AI was involved</li>
+                            <li>Option to request human review</li>
+                            <li>Expected timeline for review</li>
+                            <li>Contact method for questions</li>
+                        </ol>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-darker white pv4 mt5">
+        <div class="mw9 center ph3">
+            <div class="grid-row grid-gap">
+                <div class="tablet:grid-col-8">
+                    <h3 class="f4 mt0">Tardigrade AI</h3>
+                    <p class="f6">
+                        An open source project providing disclosure patterns for AI systems in government.
+                        Built to complement <a href="https://aistatements.org" class="white">AI Statements</a>.
+                    </p>
+                </div>
+                <div class="tablet:grid-col-4">
+                    <h4 class="f5 mt0">Links</h4>
+                    <ul class="usa-list usa-list--unstyled f6">
+                        <li><a href="https://github.com/Digital-Corps-PDX/tardigrade" class="white">GitHub</a></li>
+                        <li><a href="#" class="white">Documentation</a></li>
+                        <li><a href="#" class="white">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bt b--light-gray pt3 mt4">
+                <p class="f6 mb0">CC0 1.0 Universal - Public Domain</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/uswds@3.7.1/dist/js/uswds.min.js"></script>
+    <script src="tardigrade.js"></script>
+</body>
+</html>
