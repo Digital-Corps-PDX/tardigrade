@@ -1,0 +1,268 @@
+/* Tardigrade AI - USWDS Extension Styles */
+/* CC0 1.0 - Public Domain */
+
+/* Tardigrade-specific design tokens */
+:root {
+  /* AI-specific colors using USWDS tokens */
+  --tardigrade-ai-primary: var(--usa-primary, #005ea2);
+  --tardigrade-ai-automated: var(--usa-secondary, #d83933);
+  --tardigrade-ai-human: var(--usa-success, #00a91c);
+  --tardigrade-ai-warning: var(--usa-warning, #ffbe2e);
+  
+  /* Confidence levels */
+  --tardigrade-confidence-high: var(--usa-success, #00a91c);
+  --tardigrade-confidence-medium: var(--usa-warning, #ffbe2e);
+  --tardigrade-confidence-low: var(--usa-error, #d54309);
+}
+
+/* Badge variants for AI disclosure */
+.usa-tag.tardigrade-ai {
+  background-color: var(--tardigrade-ai-primary);
+  color: white;
+}
+
+.usa-tag.tardigrade-automated {
+  background-color: var(--tardigrade-ai-automated);
+  color: white;
+}
+
+.usa-tag.tardigrade-human {
+  background-color: var(--tardigrade-ai-human);
+  color: white;
+}
+
+/* Inline disclosure patterns */
+.tardigrade-info {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.tardigrade-info .usa-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--tardigrade-ai-primary);
+}
+
+/* Process flow styles */
+.tardigrade-flow {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.tardigrade-flow-step {
+  margin: 1rem 0;
+}
+
+.tardigrade-flow-arrow {
+  font-size: 2rem;
+  color: var(--usa-base-light);
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+/* Confidence indicators */
+.tardigrade-confidence {
+  margin-bottom: 1.5rem;
+}
+
+.tardigrade-confidence .usa-alert {
+  margin-top: 0.5rem;
+}
+
+/* Pulse animation for active status */
+@keyframes tardigrade-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.tardigrade-pulse {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: tardigrade-pulse 2s ease-in-out infinite;
+  margin-right: 0.25rem;
+}
+
+/* Audit trail table enhancements */
+.usa-table .usa-tag {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  white-space: nowrap;
+}
+
+/* Decision card enhancements */
+.usa-card__footer .usa-button {
+  margin-bottom: 0;
+}
+
+/* Contestability form styles */
+.tardigrade-contest-form {
+  max-width: 40rem;
+}
+
+/* Hover effects for interactive elements */
+.tardigrade-info:hover .usa-icon {
+  fill: var(--usa-primary-dark);
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+/* Float utilities */
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-success {
+  color: var(--tardigrade-ai-human);
+}
+
+.text-secondary {
+  color: var(--tardigrade-ai-automated);
+}
+
+/* Override notice patterns */
+.tardigrade-override {
+  border-left: 4px solid var(--tardigrade-ai-warning);
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+.tardigrade-override-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Expandable details */
+.tardigrade-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--usa-base-lightest);
+  border-radius: 0.25rem;
+}
+
+/* Print styles */
+@media print {
+  .usa-tag.tardigrade-ai,
+  .usa-tag.tardigrade-automated,
+  .usa-tag.tardigrade-human {
+    border: 1px solid currentColor;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .tardigrade-flow-arrow,
+  .tardigrade-pulse {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .usa-tag.tardigrade-ai,
+  .usa-tag.tardigrade-automated,
+  .usa-tag.tardigrade-human {
+    border: 2px solid;
+  }
+  
+  .tardigrade-info .usa-icon {
+    fill: currentColor;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .float-right,
+  .float-left {
+    float: none;
+    display: block;
+    margin-top: 0.5rem;
+  }
+  
+  .tardigrade-flow {
+    padding: 0 1rem;
+  }
+  
+  .usa-table-container {
+    margin: 0 -1rem;
+  }
+}
+
+/* Additional pattern styles for complex implementations */
+.tardigrade-decision-summary {
+  border: 1px solid var(--usa-base-lighter);
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background: white;
+}
+
+.tardigrade-factor-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tardigrade-factor-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--usa-base-lightest);
+}
+
+.tardigrade-factor-list li:last-child {
+  border-bottom: none;
+}
+
+/* Status indicators */
+.tardigrade-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.tardigrade-status-indicator::before {
+  content: '';
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--usa-base-light);
+}
+
+.tardigrade-status-indicator.active::before {
+  background-color: var(--tardigrade-ai-human);
+  animation: tardigrade-pulse 2s ease-in-out infinite;
+}
+
+.tardigrade-status-indicator.pending::before {
+  background-color: var(--tardigrade-ai-warning);
+}
+
+.tardigrade-status-indicator.complete::before {
+  background-color: var(--tardigrade-ai-primary);
+}
+
+/* Expandable accordion enhancement */
+.usa-accordion__button .usa-tag {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Form enhancements */
+.usa-form-group .usa-tag {
+  margin-left: 0.5rem;
+}
+
+.usa-input-group__suffix .usa-tag {
+  border-radius: 0;
+  margin: 0;
+}
